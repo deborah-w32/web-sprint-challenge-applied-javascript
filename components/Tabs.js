@@ -10,4 +10,12 @@
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 
+import axios from 'axios'
 
+// {"topics":["javascript","bootstrap","technology","jquery","node.js"]}
+
+const topicsEntryPoint = document.querySelector('.title')
+
+function createTheTopicsTab(){
+    const allTheTopics = 'https://lambda-times-backend.herokuapp.com/topics' 
+}
