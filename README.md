@@ -28,13 +28,23 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What is the DOM?
 
+Document Object Model -- Object representation of the html elements of the webpage, but is not the webpage itself.
+
 2. What is an event?
+
+Events are how users interact with webpages, through clicks, scrolls, highlights, etc.
 
 3. What is an event listener?
 
+An event listener is the function that tells the event what should happen in oder to execute the acton it was told to.
+
 4. Why would we convert a NodeList into an Array?
 
+It allows you to be creative if an HTML solution is not possible, like if you do not have an ID or a class.
+
 5. What is a component?
+
+Components ar the building blocks to modern application building, and allows you to reuse HTML, CSS, and JS.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -44,27 +54,27 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 #### Repository Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [x] Create a forked copy of this project
+- [x] Add your team lead as collaborator on Github
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: `git checkout -b <firstName-lastName>`.
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: `git push origin <firstName-lastName>`
 
 #### Launching the App
 
-- [ ] Navigate to the root of the project with your command line
-- [ ] Run `npm install` to download the dependencies listed in the `package.json` file
-- [ ] Run `npm start` to compile the project and serve it
-- [ ] Navigate Chrome to the URL indicated in the output of the `npm start` command
+- [x] Navigate to the root of the project with your command line
+- [x] Run `npm install` to download the dependencies listed in the `package.json` file
+- [x] Run `npm start` to compile the project and serve it
+- [x] Navigate Chrome to the URL indicated in the output of the `npm start` command
 
 ### Task 2: Project Requirements
 
 Your finished project must include all of the following requirements:
 
-- [ ] Look through the HTML code and familiarize yourself with the different sections. Some of them already exist, but some need to be filled in. DO NOT add any code to the HTML file itself.
+- [x] Look through the HTML code and familiarize yourself with the different sections. Some of them already exist, but some need to be filled in. DO NOT add any code to the HTML file itself.
 
-- [ ] Following the instructions in the `components/Header.js` file, create the Header.
+- [x] Following the instructions in the `components/Header.js` file, create the Header.
 
 - [ ] Following the instructions in the `components/Tabs.js` file, create the Tabs.
 
