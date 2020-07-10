@@ -14,8 +14,38 @@ import axios from 'axios'
 
 // {"topics":["javascript","bootstrap","technology","jquery","node.js"]}
 
-const topicsEntryPoint = document.querySelector('.title')
+// {
+//     "topics": [
+//         "javascript",
+//         "bootstrap",
+//         "technology",
+//         "jquery",
+//         "node.js"
+//     ]
+// }
 
-function createTheTopicsTab(){
-    const allTheTopics = 'https://lambda-times-backend.herokuapp.com/topics' 
+const topicsEntry = document.querySelector('div.topics')
+
+
+function createTheTabs(topicsData){
+    let topicsTabs = document.createElement('div')
+    topicsTabs.textContent = topicsData
+    topicsTabs.classList.add('tab')
+    
+
+    return topicsTabs
 }
+
+
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
+    .then( response => {
+        response.topicsData.forEach( item => {
+            let theNewTabs = createTheTabs(item)
+            topicsEntry.appendChild(theNewTabs)
+        })
+    })
+    .catch( error => {
+        console.log("Error:", error)
+    })
+    
+    createTheTabs(axios.topics)
