@@ -140,7 +140,22 @@ function makeLambdaArticleCards(articleObj){
     imageContainer.appendChild(authorImage)
     authorDiv.appendChild(authorName)
 
+    headline.textContent = articleObj.articles.headline
+    authorImage.src = articleObj.articles.authorPhoto
+    authorName.textContent = articleObj.articles.authorName
 
-
-
+    return articlesEntryPoint
 }
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then( response => {
+        response.articles.articleObj.forEach( item => {
+            let articleCards = makeLambdaArticleCards(item)
+            articlesEntryPoint.appendChild(articleCards)
+        })
+    })
+    .catch( error => {
+        console.log("Error:", error)
+    })
+    
+    makeLambdaArticleCards()
