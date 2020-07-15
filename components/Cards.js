@@ -117,20 +117,9 @@ How We Will See the World Through a Digital Lense"
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 import axios from 'axios'
+const articlesInfo = 'https://lambda-times-backend.herokuapp.com/articles'
 
 const articlesEntryPoint = document.querySelector('.cards-container')
-
-
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-    .then(result => {
-        const articles = result.data.articles.javascrip
-        articles.forEach(articleTopic => {
-            articlesEntryPoint.appendChild(makeLambdaArticleCards(articleTopic))
-        })
-})
-    .catch( () =>{
-        console.log('Retribution!')
-    })
 
 
 function makeLambdaArticleCards(articleTopic){
@@ -152,14 +141,26 @@ function makeLambdaArticleCards(articleTopic){
     imageContainer.appendChild(authorImage)
     authorDiv.appendChild(cardAuthorName)
 
-    cardHeadline.textContent = articleTopic.headline
-    authorImage.setAttribute = ('src', articleTopic.authorPhoto)
+    cardHeadline.textContent = `${articleTopic.headline}`
+    authorImage.src = (`${articleTopic.authorPhoto}`)
     cardAuthorName.textContent = `By: ${articleTopic.authorName}`
+
+    theCard.addEventListener('click', ()=>console.log(articleTopic.headline))
 
     return theCard
 }
 
-// function clickTheCards(){
-    
-// }
+axios.get(articlesInfo)
+    .then(function(article){
+        article.data.articles.javascript.forEach(e => {articlesEntryPoint.appendChild( makeLambdaArticleCards(e))})
+        article.data.articles.bootstrap.forEach(e => {articlesEntryPoint.appendChild( makeLambdaArticleCards(e))})
+        article.data.articles.technology.forEach(e => {articlesEntryPoint.appendChild( makeLambdaArticleCards(e))})
+        article.data.articles.jquery.forEach(e => {articlesEntryPoint.appendChild( makeLambdaArticleCards(e))})
+        article.data.articles.node.forEach(e => {articlesEntryPoint.appendChild( makeLambdaArticleCards(e))})
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+
+
 
