@@ -120,42 +120,46 @@ import axios from 'axios'
 
 const articlesEntryPoint = document.querySelector('.cards-container')
 
-function makeLambdaArticleCards(articleObj){
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then(result => {
+        const articles = result.data.articles.javascrip
+        articles.forEach(articleTopic => {
+            articlesEntryPoint.appendChild(makeLambdaArticleCards(articleTopic))
+        })
+})
+    .catch( () =>{
+        console.log('Retribution!')
+    })
+
+
+function makeLambdaArticleCards(articleTopic){
     const theCard = document.createElement('div')
-    const headline = document.createElement('div')
+    const cardHeadline = document.createElement('div')
     const authorDiv = document.createElement('div')
     const imageContainer = document.createElement('div')
     const authorImage = document.createElement('img')
-    const authorName = document.createElement('span')
+    const cardAuthorName = document.createElement('span')
 
     theCard.className = 'card'
-    headline.className = 'headline'
+    cardHeadline.className = 'headline'
     authorDiv.className = 'author'
     imageContainer.className = 'img-container'
 
-    articlesEntryPoint.appendChild(theCard)
-    theCard.appendChild(headline)
+    theCard.appendChild(cardHeadline)
     theCard.appendChild(authorDiv)
     authorDiv.appendChild(imageContainer)
     imageContainer.appendChild(authorImage)
-    authorDiv.appendChild(authorName)
+    authorDiv.appendChild(cardAuthorName)
 
-    headline.textContent = articleObj.articles.headline
-    authorImage.src = articleObj.articles.authorPhoto
-    authorName.textContent = articleObj.articles.authorName
+    cardHeadline.textContent = articleTopic.headline
+    authorImage.setAttribute = ('src', articleTopic.authorPhoto)
+    cardAuthorName.textContent = `By: ${articleTopic.authorName}`
 
-    return articlesEntryPoint
+    return theCard
 }
 
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-    .then( response => {
-        response.articles.articleObj.forEach( item => {
-            let articleCards = makeLambdaArticleCards(item)
-            articlesEntryPoint.appendChild(articleCards)
-        })
-    })
-    .catch( error => {
-        console.log("Error:", error)
-    })
+// function clickTheCards(){
     
-    makeLambdaArticleCards()
+// }
+
