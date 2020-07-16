@@ -118,7 +118,6 @@ How We Will See the World Through a Digital Lense"
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 import axios from 'axios'
 
-// const articleAxios = 'https://lambda-times-backend.herokuapp.com/articles'
 const articlesEntryPoint = document.querySelector('.cards-container')
 
 
