@@ -118,6 +118,7 @@ How We Will See the World Through a Digital Lense"
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 import axios from 'axios'
 
+// const articleAxios = 'https://lambda-times-backend.herokuapp.com/articles'
 const articlesEntryPoint = document.querySelector('.cards-container')
 
 
@@ -149,7 +150,7 @@ function makeLambdaArticleCards(articleTopic){
     return theCard
 }
 
-axios.get('https://lambda-times-backend.herokuapp.com/article')
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then(function(article){
         article.data.articles.javascript.forEach(e => {articlesEntryPoint.appendChild( makeLambdaArticleCards(e))})
         article.data.articles.bootstrap.forEach(e => {articlesEntryPoint.appendChild( makeLambdaArticleCards(e))})
