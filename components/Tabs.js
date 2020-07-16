@@ -30,9 +30,13 @@ const topicsEntryPoint = document.querySelector('.topics')
 axios.get(getTopics)
     .then(function(topic){
         topic.data.topics.forEach(item => {
+
             const topicsTab = document.createElement('div')
+
             topicsTab.className = 'tab'
+
             topicsTab.textContent = `${item}`
+
             topicsEntryPoint.appendChild(topicsTab)
         })
     })
