@@ -33,6 +33,6 @@ function Header(date, h1, temp) {
     spanTemp.textContent = temp
 
     return headerDiv
-};
+}
 
 Header('MARCH 28, 2020', 'Lambda Times', '98°')
