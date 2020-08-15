@@ -22,3 +22,51 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+const entryPoint = document.querySelector('.carousel-container');
+
+function carouselMaker(){
+  const images = [
+    './assets/carousel/mountains.jpeg',
+		'./assets/carousel/computer.jpeg',
+		'./assets/carousel/trees.jpeg',
+		'./assets/carousel/turntable.jpeg'
+  ];
+
+  let index = 0;
+
+  const carousel = document.createElement('div');
+  const leftButton = document.createElement('div');
+  const carouselImg = document.createElement('img');
+  const rightButton = document.createElement('div');
+
+  carousel.className = 'carousel';
+  leftButton.className = 'left-button';
+  rightButton.className = 'right-button';
+
+  leftButton.textContent = '<';
+  carouselImg.src = `${images[0]}`
+  rightButton.textContent = '>';
+
+  entryPoint.appendChild(carousel);
+  carousel.appendChild(leftButton);
+  carousel.appendChild(carouselImg);
+  carousel.appendChild(rightButton);
+
+  leftButton.addEventListener("click", () => {
+		if (index < images.length) {
+			index++;
+			carouselImg.setAttribute("src", `${images[index]}`);
+		}
+	});
+  rightButton.addEventListener("click", () => {
+		if (index < images.length) {
+			index++;
+			carouselImg.setAttribute("src", `${images[index]}`);
+		}
+	});
+
+  return carousel;
+}
+
+carouselMaker();
