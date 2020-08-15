@@ -23,14 +23,14 @@
   </div>
 */
 
-const entryPoint = document.querySelector('.carousel-container');
+const entryPoint = document.querySelector('div.carousel-container');
 
 function carouselMaker(){
   const images = [
     './assets/carousel/mountains.jpeg',
 		'./assets/carousel/computer.jpeg',
 		'./assets/carousel/trees.jpeg',
-		'./assets/carousel/turntable.jpeg'
+		'./assets/carousel/turntable.jpeg',
   ];
 
   let index = 0;
@@ -45,7 +45,7 @@ function carouselMaker(){
   rightButton.className = 'right-button';
 
   leftButton.textContent = '<';
-  carouselImg.src = `${images[0]}`
+  carouselImg.setAttribute('src', `${images[0]}`);
   rightButton.textContent = '>';
 
   entryPoint.appendChild(carousel);
@@ -53,17 +53,19 @@ function carouselMaker(){
   carousel.appendChild(carouselImg);
   carousel.appendChild(rightButton);
 
-  leftButton.addEventListener("click", () => {
+  leftButton.addEventListener('click', () => {
 		if (index < images.length) {
 			index++;
-			carouselImg.setAttribute("src", `${images[index]}`);
-		}
+			carouselImg.setAttribute('src', `${images[index]}`);
+    }
+    console.log('left click!')
 	});
-  rightButton.addEventListener("click", () => {
-		if (index < images.length) {
-			index++;
-			carouselImg.setAttribute("src", `${images[index]}`);
-		}
+  rightButton.addEventListener('click', () => {
+		if (index > 0) {
+			index--;
+			carouselImg.setAttribute('src', `${images[index]}`);
+    }
+    console.log('right click!')
 	});
 
   return carousel;
