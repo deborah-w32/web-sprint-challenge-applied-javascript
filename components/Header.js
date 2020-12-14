@@ -28,12 +28,12 @@ function Header(date, h1, temp) {
     spanDate.className = 'date';
     spanTemp.className = 'temp';
 
-    spanDate.textContent = date
-    lambdaH1.textContent = h1
-    spanTemp.textContent = temp
+    spanDate.textContent = date;
+    lambdaH1.textContent = h1;
+    spanTemp.textContent = temp;
 
-    return headerDiv
+    return headerDiv;
 }
 
-Header('MARCH 28, 2020', 'Lambda Times', '98°')
+Header('MARCH 28, 2020', 'Lambda Times', '98°');
 
