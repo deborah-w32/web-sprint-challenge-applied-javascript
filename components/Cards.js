@@ -20,3 +20,49 @@
 // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
+
+import axios from 'axios';
+
+const entryPoint = document.querySelector('.cards-container');
+
+function articleCardMaker(articleTopic){
+    const card = document.createElement('div');
+    const headline = document.createElement('div');
+    const authorDiv = document.createElement('div');
+    const imgContainer = document.createElement('div');
+    const authorImg = document.createElement('img');
+    const authorName = document.createElement('span');
+
+    card.className = 'card';
+    headline.className = 'headline';
+    authorDiv.className = 'author';
+    imgContainer.className = 'img-container';
+
+    card.appendChild(headline);
+    card.appendChild(authorDiv);
+    authorDiv.appendChild(imgContainer);
+    imgContainer.appendChild(authorImg);
+    authorDiv.appendChild(authorName);
+
+    headline.textContent = `${articleTopic.headline}`;
+    authorImg.src = (`${articleTopic.authorPhoto}`);
+    authorName.textContent = `By: ${articleTopic.authorName}`;
+
+    card.addEventListener('click', () =>{
+        console.log(articleTopic.headline);
+    });
+
+    return card;
+}
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then(function(article){
+        article.data.articles.javascript.forEach(e => {entryPoint.appendChild( articleCardMaker(e))})
+        article.data.articles.bootstrap.forEach(e => {entryPoint.appendChild( articleCardMaker(e))})
+        article.data.articles.technology.forEach(e => {entryPoint.appendChild( articleCardMaker(e))})
+        article.data.articles.jquery.forEach(e => {entryPoint.appendChild( articleCardMaker(e))})
+        article.data.articles.node.forEach(e => {entryPoint.appendChild( articleCardMaker(e))})
+    })
+    .catch(function(error){
+        console.log(error)
+    })
